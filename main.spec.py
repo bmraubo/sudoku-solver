@@ -27,6 +27,6 @@ class myTests(unittest.TestCase):
         self.assertEqual(Sudoku.solve(test_sudoku), test_solution)
 
     def test_poss(self):
-        self.assertEqual(Sudoku.poss(2,0,4), True)
+        self.assertEqual(Sudoku.poss(test_sudoku, 2, 0, 4), True)
 
 unittest.main()
