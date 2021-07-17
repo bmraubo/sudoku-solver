@@ -6,7 +6,9 @@ class Sudoku:
 
     def solve(puzzle):
         print(numpy.matrix(puzzle), '\n')
-        Sudoku.next_value(puzzle)
+        puzzle = Sudoku.next_value(puzzle)
+        print(numpy.matrix(puzzle))
+        return puzzle
 
     def next_value(puzzle):
         for y in range(0, 9):
@@ -15,10 +17,11 @@ class Sudoku:
                     for n in range(1, 10):
                         if Sudoku.poss(puzzle, x, y, n):
                             puzzle[y][x] = n
-                            Sudoku.next_value(puzzle)
+                            if Sudoku.next_value(puzzle):
+                                return puzzle
                             puzzle[y][x] = 0
                     return
-        print(numpy.matrix(puzzle))
+        return puzzle
 
     def poss(puzzle, x, y, n):
         # for n checks against nums in x,y axis to see if num is possible

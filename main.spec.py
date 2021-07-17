@@ -24,15 +24,9 @@ test_solution =  [[5,3,4,6,7,8,9,1,2],
 class myTests(unittest.TestCase):
 
     def test_solution(self):
-        captured_output = io.StringIO()
-        sys.stdout = captured_output
-        Sudoku.next_value(test_sudoku)
-        sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), test_solution)
+        self.assertEqual(Sudoku.solve(test_sudoku), test_solution)
 
     def test_poss(self):
-
         self.assertEqual(Sudoku.poss(test_sudoku, 2, 0, 4), True)
-
 
 unittest.main()
