@@ -1,4 +1,3 @@
-
 class Sudoku:
 
     # Displaying the board
