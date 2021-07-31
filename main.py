@@ -1,15 +1,25 @@
 
-import numpy
-
-
 class Sudoku:
 
+    # Displaying the board
+
+    def display_board(puzzle):
+        print('\n')
+        print('+-------+-------+-------+')
+        for y in range(0, 9):
+            print(f'| {puzzle[y][0]} {puzzle[y][1]} {puzzle[y][2]} ' +
+                    f'| {puzzle[y][3]} {puzzle[y][4]} {puzzle[y][5]} ' +
+                    f'| {puzzle[y][6]} {puzzle[y][7]} {puzzle[y][8]} |')
+            if y in [2, 5, 8]:
+                print('+-------+-------+-------+')
+
     def solve(puzzle):
-        print(numpy.matrix(puzzle), '\n')
+        Sudoku.display_board(puzzle)
         puzzle = Sudoku.next_value(puzzle)
-        print(numpy.matrix(puzzle))
+        Sudoku.display_board(puzzle)
         return puzzle
 
+    # Solution Logic
     def next_value(puzzle):
         for y in range(0, 9):
             for x in range(0, 9):

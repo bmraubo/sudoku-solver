@@ -34,7 +34,7 @@ if Sudoku.next_value(puzzle):
 
 This passes up the answer from the last run of the recursive function to the allow the final `return puzzle` to provide us with a solution, rather than 'None'.
 
-The poss function is simple enough - it checks a input value against the rows and columns according to the rules of Sudoku. The more complicated aspect of these checks are the 3x3 squares. This is dealt with as follows (I take no credit for it):
+The poss function is simple enough - it checks a input value against the rows and columns according to the rules of Sudoku. The more complicated aspect of these checks are the 3x3 squares. This is dealt with as follows (I take no credit for it - its from ComputerPhile):
 
 ```
 x_sq = (x//3)*3

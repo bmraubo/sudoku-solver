@@ -1,4 +1,4 @@
-import unittest, io, sys, numpy
+import unittest
 from main import *
 
 test_sudoku = [[5,3,0,0,7,0,0,0,0],
