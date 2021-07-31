@@ -1,7 +1,12 @@
 class Sudoku:
 
-    # Displaying the board
+    def solve(puzzle):
+        Sudoku.display_board(puzzle)
+        puzzle = Sudoku.next_value(puzzle)
+        Sudoku.display_board(puzzle)
+        return puzzle
 
+    # Displaying the board
     def display_board(puzzle):
         print('\n')
         print('+-------+-------+-------+')
@@ -11,12 +16,6 @@ class Sudoku:
                     f'| {puzzle[y][6]} {puzzle[y][7]} {puzzle[y][8]} |')
             if y in [2, 5, 8]:
                 print('+-------+-------+-------+')
-
-    def solve(puzzle):
-        Sudoku.display_board(puzzle)
-        puzzle = Sudoku.next_value(puzzle)
-        Sudoku.display_board(puzzle)
-        return puzzle
 
     # Solution Logic
     def next_value(puzzle):
