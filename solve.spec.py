@@ -28,5 +28,9 @@ class myTests(unittest.TestCase):
 
     def test_poss(self):
         self.assertEqual(Sudoku.poss(test_sudoku, 2, 0, 4), True)
+    
+    def test_convert_row(self):
+        test_row = '530070000'
+        self.assertEqual(Sudoku.convert_row(test_row), [5,3,0,0,7,0,0,0,0])
 
 unittest.main()

@@ -1,5 +1,5 @@
 import PyInquirer as inq
-import sys
+import sys, solve
 
 class Menu:
 
@@ -16,7 +16,8 @@ class Menu:
         }]
         choice = inq.prompt(options)
         if choice['Main Menu'] == 'Solve Sudoku':
-            print(f'PLACEHOLDER: {choice["Main Menu"]}')
+            puzzle = solve.Sudoku.input_puzzle()
+            solve.Sudoku.solve(puzzle)
         elif choice['Main Menu'] == 'View Saved Solutions':
             print(f'PLACEHOLDER: {choice["Main Menu"]}')
         elif choice['Main Menu'] == 'Exit':

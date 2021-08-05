@@ -10,12 +10,48 @@ class Sudoku:
     def display_board(puzzle):
         print('\n')
         print('+-------+-------+-------+')
-        for y in range(0, 9):
+        for y in range(0, len(puzzle)):
             print(f'| {puzzle[y][0]} {puzzle[y][1]} {puzzle[y][2]} ' +
                     f'| {puzzle[y][3]} {puzzle[y][4]} {puzzle[y][5]} ' +
                     f'| {puzzle[y][6]} {puzzle[y][7]} {puzzle[y][8]} |')
             if y in [2, 5, 8]:
                 print('+-------+-------+-------+')
+
+    # Input Puzzle
+
+    def convert_row(row):
+        converted_row = []
+        for num in row:
+            converted_row.append(int(num))
+        return converted_row
+
+    def validate_row(row, puzzle):
+        if len(row) < 9:
+            print('Ooops! - Row too short!!!')
+            return False
+        elif len(row) > 9:
+            print('Ooops! - Row too long!!!')
+            return False
+        Sudoku.display_board(puzzle)
+        answer = input('Is that correct? y/n ')
+        if answer.lower() == 'y':
+            return True
+        else:
+            return False
+
+    def input_puzzle():
+        puzzle = []
+        input_msg = 'Input the known values.\nIf value is blank, input 0.\nEg. 530070000\n'
+        while len(puzzle) < 9:
+            valid = False
+            while valid == False:
+                new_row = input(input_msg)
+                puzzle.append(Sudoku.convert_row(new_row))
+                valid = Sudoku.validate_row(new_row, puzzle)
+                if not valid:
+                    puzzle.pop()
+                    print('Try Again\n\n')
+        return puzzle
 
     # Solution Logic
     def next_value(puzzle):
