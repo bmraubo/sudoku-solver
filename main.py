@@ -1,7 +1,9 @@
 import menu
 
+
 def intro_message():
     pass
+
 
 if __name__ == "__main__":
     running = True

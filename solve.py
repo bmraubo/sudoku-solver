@@ -1,9 +1,24 @@
+import time
+
+
 class Sudoku:
+
+    demo = [[5, 3, 0, 0, 7, 0, 0, 0, 0],
+            [6, 0, 0, 1, 9, 5, 0, 0, 0],
+            [0, 9, 8, 0, 0, 0, 0, 6, 0],
+            [8, 0, 0, 0, 6, 0, 0, 0, 3],
+            [4, 0, 0, 8, 0, 3, 0, 0, 1],
+            [7, 0, 0, 0, 2, 0, 0, 0, 6],
+            [0, 6, 0, 0, 0, 0, 2, 8, 0],
+            [0, 0, 0, 4, 1, 9, 0, 0, 5],
+            [0, 0, 0, 0, 8, 0, 0, 7, 9]]
 
     def solve(puzzle):
         Sudoku.display_board(puzzle)
+        start_time = time.time()
         puzzle = Sudoku.next_value(puzzle)
         Sudoku.display_board(puzzle)
+        print(f'\nSolved in {time.time() - start_time:.4f} seconds.\n')
         return puzzle
 
     # Displaying the board
@@ -44,7 +59,7 @@ class Sudoku:
         input_msg = 'Input the known values.\nIf value is blank, input 0.\nEg. 530070000\n'
         while len(puzzle) < 9:
             valid = False
-            while valid == False:
+            while not valid:
                 new_row = input(input_msg)
                 puzzle.append(Sudoku.convert_row(new_row))
                 valid = Sudoku.validate_row(new_row, puzzle)
