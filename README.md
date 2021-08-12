@@ -83,3 +83,5 @@ You can't even press Enter several times... that will just register the row as i
 Haven't touched that yet, but just write puzzle and solution to JSON
 
 ## Demo mode
+
+Demo Mode is simple enough - it allows the functionality of the solver to be shown off using a pre-determined puzzle, instead of going through the labour intensive process of finding a Sudoku and inputting it into the program line by line.
