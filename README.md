@@ -72,11 +72,11 @@ The way the func is designed allows for partial boards to be printed - this was 
 
 So in an ideal world, I would just want to be able to take a picture of a sudoku, or screenshot, and have that be solved. But that is a little beyond me for now.
 
-Instead, I used an input function that asks you to type in the puzzle row by row, with 0 reprepresenting missing values. It is not the most graceful solution perhaps, but it does allow me to quite easily feed in the input into the solution fucntion.
+Instead, I used an input function that asks you to type in the puzzle row by row, with 0 representing missing values. It is not the most graceful solution perhaps, but it does allow me to quite easily feed in the input into the solution function.
 
 The one thing I regret is having to validate each row after it is typed. It is very annoying because most of the time I got the row right, and repeatedly validating got tedious. Then again, when a mistake is made, it mean not only having to start the puzzle again, but also having to complete input of any further rows. Which would be really shit. So its a judgment call between a small amount of constant annoyance or rare catastrophies. Hmmm.
 
-You can't even press Enter several times... that will just register the row as incomplete. Perhaps it should recognise that if youre just tapping Enter, you've given up on the process. 
+You can't even press Enter several times... that will just register the row as incomplete. Perhaps it should recognise that if you're just tapping Enter, you've given up on the process. 
 
 ## Storing Puzzles
 
@@ -85,3 +85,7 @@ Haven't touched that yet, but just write puzzle and solution to JSON
 ## Demo mode
 
 Demo Mode is simple enough - it allows the functionality of the solver to be shown off using a pre-determined puzzle, instead of going through the labour intensive process of finding a Sudoku and inputting it into the program line by line.
+
+## History
+
+

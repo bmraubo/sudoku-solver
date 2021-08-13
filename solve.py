@@ -1,6 +1,3 @@
-import time
-
-
 class Sudoku:
 
     demo = [[5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -15,10 +12,8 @@ class Sudoku:
 
     def solve(puzzle):
         Sudoku.display_board(puzzle)
-        start_time = time.time()
         puzzle = Sudoku.next_value(puzzle)
         Sudoku.display_board(puzzle)
-        print(f'\nSolved in {time.time() - start_time:.4f} seconds.\n')
         return puzzle
 
     # Displaying the board
