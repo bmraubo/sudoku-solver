@@ -88,4 +88,7 @@ Demo Mode is simple enough - it allows the functionality of the solver to be sho
 
 ## History
 
+So after much thinking, this is how its going to work. I am going to be really granular with the functions - this will allow for maximum expandability. It would be cool in the future to allow saving to multiple lists, and name the lists etc and this seems the best way of keeping options open and avoiding rewrites later. 
+
+
 

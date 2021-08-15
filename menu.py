@@ -9,9 +9,9 @@ class Menu:
     def start_menu():
 
         # Menu Choices
-        choice1 = 'Solve Sudoku'
-        choice2 = 'Run Demo'
-        choice3 = 'View Saved Solutions'
+        choice_solve = 'Solve Sudoku'
+        choice_demo = 'Run Demo'
+        choice_history = 'View Saved Solutions'
         choice_exit = 'Exit'
 
         options = [{
@@ -19,56 +19,56 @@ class Menu:
             'name': 'Main Menu',
             'message': 'What would you like to do?',
             'choices': [
-                choice1,
-                choice2,
-                choice3,
+                choice_solve,
+                choice_demo,
+                choice_history,
                 choice_exit
             ]
         }]
         choice = inq.prompt(options)
 
         # Menu Logic
-        if choice['Main Menu'] == choice1:
+        if choice['Main Menu'] == choice_solve:
             puzzle = solve.Sudoku.input_puzzle()
             start_time = time.time()
             solution = solve.Sudoku.solve(puzzle)
             solve_time = f'{time.time() - start_time:.4f}'
             print(f'\nSolved in {solve_time} seconds.\n')
             Menu.solution_menu(puzzle, solution, solve_time)
-        elif choice['Main Menu'] == choice2:
+        elif choice['Main Menu'] == choice_demo:
             puzzle = solve.Sudoku.demo
             start_time = time.time()
             solution = solve.Sudoku.solve(puzzle)
             solve_time = f'{time.time() - start_time:.4f}'
             print(f'\nSolved in {solve_time} seconds.\n')
             Menu.solution_menu(puzzle, solution, solve_time)
-        elif choice['Main Menu'] == choice3:
+        elif choice['Main Menu'] == choice_history:
             print(f'PLACEHOLDER: {choice["Main Menu"]}')
         elif choice['Main Menu'] == choice_exit:
             sys.exit()
 
     def solution_menu(puzzle, solution, solve_time):
-        choose_history = 'Save Puzzle and Solution'
-        choose_again = 'Solve another puzzle'
-        choose_menu = 'Back to Main Menu'
+        choice_save = 'Save Puzzle and Solution'
+        choice_again = 'Solve another puzzle'
+        choice_menu = 'Back to Main Menu'
 
         options = [{
             'type': 'list',
             'name': 'Solution Menu',
             'message': 'What would you like to do?',
             'choices': [
-                choose_history,
-                choose_again,
-                choose_menu
+                choice_save,
+                choice_again,
+                choice_menu
             ]
         }]
         choice = inq.prompt(options)
 
-        if choice['Solution Menu'] == choose_history:
+        if choice['Solution Menu'] == choice_save:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
-        elif choice['Solution Menu'] == choose_again:
+        elif choice['Solution Menu'] == choice_again:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
-        elif choice['Solution Menu'] == choose_menu:
+        elif choice['Solution Menu'] == choice_menu:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
 
     def return_menu():
