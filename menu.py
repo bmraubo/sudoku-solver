@@ -1,7 +1,6 @@
 import PyInquirer as inq
-import sys
-import solve
-import time
+import sys, solve, time
+from history import History as history
 
 
 class Menu:
@@ -66,6 +65,12 @@ class Menu:
 
         if choice['Solution Menu'] == choice_save:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
+            if history.check_file:
+                # Save to File
+                pass
+            else:
+                # Ask to set up file
+                pass
         elif choice['Solution Menu'] == choice_again:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
         elif choice['Solution Menu'] == choice_menu:

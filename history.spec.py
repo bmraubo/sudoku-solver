@@ -1,5 +1,7 @@
 import unittest
 import history
+import os
+import json
 
 test_sudoku = [
                 [5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -30,6 +32,19 @@ test_solve_time = '0.005'
 
 class HistoryTests(unittest.TestCase):
 
+    def json_setup(self):
+        file = 'test.json'
+        test_list = 'test list'
+        os.remove(file)
+        with open(file, 'w') as f:
+            new_history = {test_list: []}
+            new_history[test_list].append(history.History.entry_prep(
+                test_sudoku,
+                test_solution,
+                test_solve_time))
+            test_str = json.dumps(new_history)
+            f.write(test_str)
+
     def test_entry_prep(self):
         self.assertEqual(history.History.entry_prep(
                         test_sudoku, test_solution, test_solve_time),
@@ -40,28 +55,46 @@ class HistoryTests(unittest.TestCase):
                         })
 
     def test_read(self):
+        self.json_setup()
         file = 'test.json'
+        test_list = 'test list'
         test_history = history.History.entry_prep(
                                         test_sudoku, 
                                         test_solution, 
                                         test_solve_time
                                         )
         history_check = history.History.read_history(file)
-        self.assertEqual(history_check[0], test_history)
+        self.assertEqual(history_check[test_list], [test_history])
 
     def test_write(self):
         file = 'test.json'
+        test_list = 'test list'
         test_history = history.History.entry_prep(
                                         test_sudoku,
                                         test_solution,
                                         test_solve_time
                                         )
         history_data = history.History.read_history(file)
-        history.History.write_history(file, history_data, test_history)
+        history.History.write_history(
+            file,
+            history_data,
+            test_history,
+            list_name=test_list)
         history_check = history.History.read_history(file)
-        self.assertEqual(history_check[-1], test_history)
+        self.assertGreater(len(history_check[test_list]), 1)
+        self.assertEqual(history_check[test_list][-1], test_history)
+
+    def test_create_list(self):
+        list_name = 'test list'
+        test_file = 'test.json'
+        os.remove(test_file)
+        history.History.create_history(list_name, file=test_file)
+        read_file = history.History.read_history(test_file)
+        expected_result = [{'test list': []}]
+        self.assertEqual(read_file, expected_result)  
 
     def test_display(self):
         pass
+
 
 unittest.main()
