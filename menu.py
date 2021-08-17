@@ -1,6 +1,5 @@
 import PyInquirer as inq
-import sys, solve, time
-from history import History as history
+import sys, solve, time, history
 
 
 class Menu:
@@ -65,16 +64,43 @@ class Menu:
 
         if choice['Solution Menu'] == choice_save:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
-            if history.check_file:
+            if history.History.check_file():
                 # Save to File
-                pass
+                history.History.save_puzzle(puzzle, solution, solve_time)
             else:
                 # Ask to set up file
-                pass
+                print('History file not found.')
+                if Menu.file_not_found():
+                    list_name = history.History.input_list_name()
+                    history.History.create_history(list_name)
+                    history.History.save_puzzle(puzzle, solution, solve_time)
+                else:
+                    Menu.solution_menu(puzzle, solution, solve_time)
         elif choice['Solution Menu'] == choice_again:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
         elif choice['Solution Menu'] == choice_menu:
             print(f'PLACEHOLDER: {choice["Solution Menu"]}')
+
+    def file_not_found():
+        choice_yes = 'Yes'
+        choice_no = 'No'
+
+        options = [{
+            'type': 'list',
+            'name': 'No List Menu',
+            'message': 'No List has been found?',
+            'choices': [
+                choice_yes,
+                choice_no
+            ]
+        }]
+
+        choice = inq.prompt(options)
+
+        if choice['No List Menu'] == 'Yes':
+            return True
+        else:
+            return False
 
     def return_menu():
         pass

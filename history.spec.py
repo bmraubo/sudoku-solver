@@ -90,7 +90,7 @@ class HistoryTests(unittest.TestCase):
         os.remove(test_file)
         history.History.create_history(list_name, file=test_file)
         read_file = history.History.read_history(test_file)
-        expected_result = [{'test list': []}]
+        expected_result = {'test list': []}
         self.assertEqual(read_file, expected_result)  
 
     def test_display(self):
