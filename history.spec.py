@@ -84,6 +84,14 @@ class HistoryTests(unittest.TestCase):
         self.assertGreater(len(history_check[test_list]), 1)
         self.assertEqual(history_check[test_list][-1], test_history)
 
+    def test_display(self):
+        file = 'test.json'
+        test_list = 'test list'
+        history_list = history.History.read_history(file)
+        print(history_list)
+        print(history.History.display_history(history_list, list_name=test_list))
+        self.assertEqual(0, 0)
+
     def test_create_list(self):
         list_name = 'test list'
         test_file = 'test.json'
@@ -92,9 +100,6 @@ class HistoryTests(unittest.TestCase):
         read_file = history.History.read_history(test_file)
         expected_result = {'test list': []}
         self.assertEqual(read_file, expected_result)  
-
-    def test_display(self):
-        pass
 
 
 unittest.main()

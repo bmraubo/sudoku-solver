@@ -28,18 +28,20 @@ class Menu:
         # Menu Logic
         if choice['Main Menu'] == choice_solve:
             puzzle = solve.Sudoku.input_puzzle()
+            unsolved = puzzle
             start_time = time.time()
             solution = solve.Sudoku.solve(puzzle)
             solve_time = f'{time.time() - start_time:.4f}'
             print(f'\nSolved in {solve_time} seconds.\n')
-            Menu.solution_menu(puzzle, solution, solve_time)
+            Menu.solution_menu(unsolved, solution, solve_time)
         elif choice['Main Menu'] == choice_demo:
             puzzle = solve.Sudoku.demo
+            unsolved = puzzle
             start_time = time.time()
             solution = solve.Sudoku.solve(puzzle)
             solve_time = f'{time.time() - start_time:.4f}'
             print(f'\nSolved in {solve_time} seconds.\n')
-            Menu.solution_menu(puzzle, solution, solve_time)
+            Menu.solution_menu(unsolved, solution, solve_time)
         elif choice['Main Menu'] == choice_history:
             print(f'PLACEHOLDER: {choice["Main Menu"]}')
         elif choice['Main Menu'] == choice_exit:

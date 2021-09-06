@@ -1,5 +1,5 @@
 import os.path
-import json
+import json, solve
 
 
 class History:
@@ -46,5 +46,16 @@ class History:
     def add_history(list_name, file='history.json'):
         pass
 
-    def display_history():
-        pass
+    def display_history(history_obj, list_name='My List'):
+        history_item = history_obj[list_name]
+        print(f'{list_name}\n')
+        for item in history_item:
+            print('Unsolved:\n')
+            solve.Sudoku.display_board(item["puzzle"])
+            print('Solved:\n')
+            solve.Sudoku.display_board(item["solution"])
+            print(f'Solved in {item["time"]} seconds\n')
+
+            
+            
+
